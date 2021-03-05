@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://xggholmesleon.github.io">
   <title>双节点ES集群部署(一) | 博客記錄之家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.环境准备1.1本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机节点1: 192.168.3.187节点2: 192.168.3.179(克隆机)">
+  <meta name="description" content="环境准备本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机节点1: 192.168.3.187节点2: 192.168.3.179(克隆机)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双节点ES集群部署(一)">
 <meta property="og:url" content="https://xggholmesleon.github.io/2020/07/03/%E5%8F%8C%E8%8A%82%E7%82%B9ES%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%B8%80/index.html">
 <meta property="og:site_name" content="博客記錄之家">
-<meta property="og:description" content="1.环境准备1.1本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机节点1: 192.168.3.187节点2: 192.168.3.179(克隆机)">
+<meta property="og:description" content="环境准备本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机节点1: 192.168.3.187节点2: 192.168.3.179(克隆机)">
 <meta property="og:image" content="https://xggholmesleon.github.io/2020/07/03/%E5%8F%8C%E8%8A%82%E7%82%B9ES%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%B8%80/1.JPG">
 <meta property="article:published_time" content="2020-07-03T10:33:10.000Z">
-<meta property="article:modified_time" content="2021-03-04T07:16:31.386Z">
+<meta property="article:modified_time" content="2021-03-05T07:05:02.510Z">
 <meta property="article:author" content="Holmes">
 <meta property="article:tag" content="es">
 <meta name="twitter:card" content="summary">
@@ -196,12 +196,20 @@
         　　<div style="margin-top:10px;margin-bottom:-15px;">
     
       
+        <span class="article-type" style="
+          color: white;
+          font-size: 14px;
+          background: #4D4D4D;
+          padding: 0 5px 1px 5px;
+          margin-right: 5px;
+          border-radius: 2px;">原创</span>
+      
     
     <span class="post-time">
       <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">533字</span>
+      <span class="post-count">524字</span>
      </span>
     </span>
 
@@ -221,17 +229,33 @@
     
     <!-- 目录内容 -->
     
+        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+            <span class="btn-bg"></span>
+            <span class="btn-text">文章导航</span>
+        </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+                <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-number">1.</span> <span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机"><span class="toc-number">1.1.</span> <span class="toc-text">本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Elasticsearch安装包准备"><span class="toc-number">1.2.</span> <span class="toc-text">Elasticsearch安装包准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CentOS-6-5-java环境准备-安装jdk1-8"><span class="toc-number">1.3.</span> <span class="toc-text">CentOS 6.5 java环境准备(安装jdk1.8)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点配置"><span class="toc-number">2.</span> <span class="toc-text">节点配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编辑安装目录下-config-elasticsearch-yml文件"><span class="toc-number">2.1.</span> <span class="toc-text">编辑安装目录下&#x2F;config&#x2F;elasticsearch.yml文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References:</span></a></li></ol>                                                    </div>                                                                      <script type="text/javascript">       
+            function showToc(){                                                                 var toc_article = document.getElementById("toc-article");                   var show_toc_btn = document.getElementById("show-toc-btn");                 toc_article.setAttribute("style","display:block");
+                    show_toc_btn.setAttribute("style","display:none");                          };
+            function showBtn(){
+                    var toc_article = document.getElementById("toc-article");                   var show_toc_btn = document.getElementById("show-toc-btn");                 toc_article.setAttribute("style","display:none");
+                    show_toc_btn.setAttribute("style","display:block");
+                    };
+        </script>
+        
         <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><h4 id="1-1本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机"><a href="#1-1本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机" class="headerlink" title="1.1本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机"></a>1.1本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机</h4><p>节点1: 192.168.3.187<br>节点2: 192.168.3.179(克隆机)</p>
+        <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机"><a href="#本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机" class="headerlink" title="本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机"></a>本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机</h4><p>节点1: 192.168.3.187<br>节点2: 192.168.3.179(克隆机)</p>
 <a id="more"></a>
 
 <p>1.1.1 CentOS 6.5克隆机教程参考百度经验，需要配置下/etc/sysconfig/network文件，分别给两台机器修改不同的主机名，我这里是改成localhost1和localhost2</p>
 <p>1.1.2 还要再配置下克隆机/etc/sysconfig/network-scripts/ifcfg-eth0文件，删除文件中UUID部分并设置对应的IPADDR以及GATEWAY（我这里的两个节点的BOOTPROTO均设置为static静态IP）</p>
-<h4 id="1-2-Elasticsearch安装包准备"><a href="#1-2-Elasticsearch安装包准备" class="headerlink" title="1.2 Elasticsearch安装包准备"></a>1.2 Elasticsearch安装包准备</h4><p><a href="https://artifacts.elasticsearch.co/downloads/elasticsearch/elasticsearch-6.4.2.tar.gz" target="_blank" rel="noopener">https://artifacts.elasticsearch.co/downloads/elasticsearch/elasticsearch-6.4.2.tar.gz</a><br>Tip1:<br>自己选择对应版本下载，我这里的是6.4.2版本</p>
+<h4 id="Elasticsearch安装包准备"><a href="#Elasticsearch安装包准备" class="headerlink" title="Elasticsearch安装包准备"></a>Elasticsearch安装包准备</h4><p><a href="https://artifacts.elasticsearch.co/downloads/elasticsearch/elasticsearch-6.4.2.tar.gz" target="_blank" rel="noopener">https://artifacts.elasticsearch.co/downloads/elasticsearch/elasticsearch-6.4.2.tar.gz</a><br>Tip1:<br>自己选择对应版本下载，我这里的是6.4.2版本</p>
 <p>同时：<br>将安装包存放在/opt/elasticsearch下并解压</p>
-<h4 id="1-3-CentOS-6-5-java环境准备-安装jdk1-8"><a href="#1-3-CentOS-6-5-java环境准备-安装jdk1-8" class="headerlink" title="1.3　CentOS 6.5 java环境准备(安装jdk1.8)"></a>1.3　CentOS 6.5 java环境准备(安装jdk1.8)</h4><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>Tip2:<br>需要注册下载，还要填写公司地址和办公电话，暂时还没有工作的童鞋随意填下</p>
+<h4 id="CentOS-6-5-java环境准备-安装jdk1-8"><a href="#CentOS-6-5-java环境准备-安装jdk1-8" class="headerlink" title="CentOS 6.5 java环境准备(安装jdk1.8)"></a>CentOS 6.5 java环境准备(安装jdk1.8)</h4><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>Tip2:<br>需要注册下载，还要填写公司地址和办公电话，暂时还没有工作的童鞋随意填下</p>
 <p>同时：<br>将安装包存放在/usr/local/java下并解压，并设置/etc/profile下的环境变量<br>配置总共三个参数:JAVA_HOME,JRE_HOME,CLASS_PATH和PATH</p>
 <p>最后：<br>别忘了刷新环境变量(有时候刷新完找不到java路径就多刷新几次)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
@@ -240,7 +264,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 
 <p>我这里成功安装结果如下：<br><img src="/2020/07/03/%E5%8F%8C%E8%8A%82%E7%82%B9ES%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2-%E4%B8%80/1.JPG" alt></p>
-<h3 id="2-节点配置"><a href="#2-节点配置" class="headerlink" title="2.节点配置"></a>2.节点配置</h3><h4 id="2-1编辑安装目录下-config-elasticsearch-yml文件"><a href="#2-1编辑安装目录下-config-elasticsearch-yml文件" class="headerlink" title="2.1编辑安装目录下/config/elasticsearch.yml文件"></a>2.1编辑安装目录下/config/elasticsearch.yml文件</h4><p>节点192.168.3.187配置如下：</p>
+<h3 id="节点配置"><a href="#节点配置" class="headerlink" title="节点配置"></a>节点配置</h3><h4 id="编辑安装目录下-config-elasticsearch-yml文件"><a href="#编辑安装目录下-config-elasticsearch-yml文件" class="headerlink" title="编辑安装目录下/config/elasticsearch.yml文件"></a>编辑安装目录下/config/elasticsearch.yml文件</h4><p>节点192.168.3.187配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         # 集群名称，两个节点需一致</span><br><span class="line">node.name: holmes-1          # 节点名称，两个节点需分别起名</span><br><span class="line">network.host: 192.168.3.187  # 绑定的地址</span><br><span class="line">network.bing_host: 0.0.0.0   # 设置本机可访问</span><br><span class="line">discovery.zen.ping.unicast.hosts: [&quot;192.168.3.187&quot;,&quot;192.168.3.179&quot;] # hosts列表</span><br></pre></td></tr></table></figure>
 
 <p>同理<br>节点192.168.3.179配置如下：</p>
