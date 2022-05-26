@@ -269,7 +269,7 @@
 <p>检验是否安装成功：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 
-<p>我这里成功安装结果如下：<br><img src="/article/1.JPG" alt></p>
+<p>我这里成功安装结果如下：<br><img src="1.JPG" alt=""></p>
 <h3 id="节点配置"><a href="#节点配置" class="headerlink" title="节点配置"></a>节点配置</h3><h4 id="编辑安装目录下-config-elasticsearch-yml文件"><a href="#编辑安装目录下-config-elasticsearch-yml文件" class="headerlink" title="编辑安装目录下/config/elasticsearch.yml文件"></a>编辑安装目录下/config/elasticsearch.yml文件</h4><p>节点192.168.3.187配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         # 集群名称，两个节点需一致</span><br><span class="line">node.name: holmes-1          # 节点名称，两个节点需分别起名</span><br><span class="line">network.host: 192.168.3.187  # 绑定的地址</span><br><span class="line">network.bing_host: 0.0.0.0   # 设置本机可访问</span><br><span class="line">discovery.zen.ping.unicast.hosts: [&quot;192.168.3.187&quot;,&quot;192.168.3.179&quot;] # hosts列表</span><br></pre></td></tr></table></figure>
 
