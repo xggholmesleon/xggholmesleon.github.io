@@ -215,7 +215,7 @@
       <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">524字</span>
+      <span class="post-count">514字</span>
      </span>
     </span>
 
@@ -254,7 +254,7 @@
         <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机"><a href="#本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机" class="headerlink" title="本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机"></a>本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机</h4><p>节点1: 192.168.3.187<br>节点2: 192.168.3.179(克隆机)</p>
+        <html><head></head><body><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机"><a href="#本文实验准备搭建双节点Elastisearch集群，准备两台Linux-CentOS-6-5-Final-64bit虚机" class="headerlink" title="本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机"></a>本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机</h4><p>节点1: 192.168.3.187<br>节点2: 192.168.3.179(克隆机)</p>
 <a id="more"></a>
 
 <p>1.1.1 CentOS 6.5克隆机教程参考百度经验，需要配置下/etc/sysconfig/network文件，分别给两台机器修改不同的主机名，我这里是改成localhost1和localhost2</p>
@@ -264,20 +264,20 @@
 <h4 id="CentOS-6-5-java环境准备-安装jdk1-8"><a href="#CentOS-6-5-java环境准备-安装jdk1-8" class="headerlink" title="CentOS 6.5 java环境准备(安装jdk1.8)"></a>CentOS 6.5 java环境准备(安装jdk1.8)</h4><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>Tip2:<br>需要注册下载，还要填写公司地址和办公电话，暂时还没有工作的童鞋随意填下</p>
 <p>同时：<br>将安装包存放在/usr/local/java下并解压，并设置/etc/profile下的环境变量<br>配置总共三个参数:JAVA_HOME,JRE_HOME,CLASS_PATH和PATH</p>
 <p>最后：<br>别忘了刷新环境变量(有时候刷新完找不到java路径就多刷新几次)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></tbody></table></figure>
 
 <p>检验是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></tbody></table></figure>
 
-<p>我这里成功安装结果如下：<br><img src="1.JPG" alt=""></p>
+<p>我这里成功安装结果如下：<br><img src="/article/1.JPG" alt=""></p>
 <h3 id="节点配置"><a href="#节点配置" class="headerlink" title="节点配置"></a>节点配置</h3><h4 id="编辑安装目录下-config-elasticsearch-yml文件"><a href="#编辑安装目录下-config-elasticsearch-yml文件" class="headerlink" title="编辑安装目录下/config/elasticsearch.yml文件"></a>编辑安装目录下/config/elasticsearch.yml文件</h4><p>节点192.168.3.187配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         # 集群名称，两个节点需一致</span><br><span class="line">node.name: holmes-1          # 节点名称，两个节点需分别起名</span><br><span class="line">network.host: 192.168.3.187  # 绑定的地址</span><br><span class="line">network.bing_host: 0.0.0.0   # 设置本机可访问</span><br><span class="line">discovery.zen.ping.unicast.hosts: [&quot;192.168.3.187&quot;,&quot;192.168.3.179&quot;] # hosts列表</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         # 集群名称，两个节点需一致</span><br><span class="line">node.name: holmes-1          # 节点名称，两个节点需分别起名</span><br><span class="line">network.host: 192.168.3.187  # 绑定的地址</span><br><span class="line">network.bing_host: 0.0.0.0   # 设置本机可访问</span><br><span class="line">discovery.zen.ping.unicast.hosts: ["192.168.3.187","192.168.3.179"] # hosts列表</span><br></pre></td></tr></tbody></table></figure>
 
 <p>同理<br>节点192.168.3.179配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         </span><br><span class="line">node.name: holmes-2          </span><br><span class="line">network.host: 192.168.3.179</span><br><span class="line">network.bing_host: 0.0.0.0  </span><br><span class="line">discovery.zen.ping.unicast.hosts: [&quot;192.168.3.187&quot;,&quot;192.168.3.179&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         </span><br><span class="line">node.name: holmes-2          </span><br><span class="line">network.host: 192.168.3.179</span><br><span class="line">network.bing_host: 0.0.0.0  </span><br><span class="line">discovery.zen.ping.unicast.hosts: ["192.168.3.187","192.168.3.179"]</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><p>1.<a href="https://jingyan.baidu.com/article/ac6a9a5e169b5d2b653eacbe.html(CentOS6.5虚拟机克隆教程)" target="_blank" rel="noopener">https://jingyan.baidu.com/article/ac6a9a5e169b5d2b653eacbe.html(CentOS6.5虚拟机克隆教程)</a><br>2.<a href="https://www.cnblogs.com/wangmo/p/7880521.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangmo/p/7880521.html</a></p>
-
+</body></html>
       
       
       
