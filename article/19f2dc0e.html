@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">281字</span>
+      <span class="post-count">287字</span>
      </span>
     </span>
 
@@ -262,36 +262,36 @@
         <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <html><head></head><body><h3 id="启动Elasticsearch集群前准备"><a href="#启动Elasticsearch集群前准备" class="headerlink" title="启动Elasticsearch集群前准备"></a>启动Elasticsearch集群前准备</h3><h4 id="创建用户及用户组"><a href="#创建用户及用户组" class="headerlink" title="创建用户及用户组"></a>创建用户及用户组</h4><p>Elasticsearch不能以root启动，因此需要添加非root用户:</p>
+        <h3 id="启动Elasticsearch集群前准备"><a href="#启动Elasticsearch集群前准备" class="headerlink" title="启动Elasticsearch集群前准备"></a>启动Elasticsearch集群前准备</h3><h4 id="创建用户及用户组"><a href="#创建用户及用户组" class="headerlink" title="创建用户及用户组"></a>创建用户及用户组</h4><p>Elasticsearch不能以root启动，因此需要添加非root用户:</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd es</span><br><span class="line">useradd es -g es</span><br><span class="line">chown -R es:es ./elasticsearch-6.4.2</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd es</span><br><span class="line">useradd es -g es</span><br><span class="line">chown -R es:es .&#x2F;elasticsearch-6.4.2</span><br></pre></td></tr></table></figure>
 <p>为非root用户添加登陆密码：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd es</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd es</span><br></pre></td></tr></table></figure>
 
 <p>我这里创建好后查看上菜单栏System–&gt;Administration–&gt;Users and Groups的结果如下：</p>
-<p><img src="https://xggholmesleon.github.io/article/19f2dc0e2.JPG" alt=""></p>
-<p><img src="https://xggholmesleon.github.io/article/19f2dc0e3.JPG" alt=""></p>
+<p><img src="https://xggholmesleon.github.io/article/19f2dc0e2.JPG" alt></p>
+<p><img src="https://xggholmesleon.github.io/article/19f2dc0e3.JPG" alt></p>
 <p>开机的登录用户时可切换es用户</p>
-<p><img src="https://xggholmesleon.github.io/article/19f2dc0e4.JPG" alt=""></p>
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://xggholmesleon.github.io/article/19f2dc0e4.JPG" alt></p>
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br></pre></td></tr></table></figure>
 <p>以上命令适用于CentOS 6</p>
 <p>CentOS 7 版本及以上使用命令如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
 
 <p>至此，两个节点之间通信的前提条件准备好了</p>
-<h3 id="启动Elasticsearch集群"><a href="#启动Elasticsearch集群" class="headerlink" title="启动Elasticsearch集群"></a>启动Elasticsearch集群</h3><h4 id="切换至es用户"><a href="#切换至es用户" class="headerlink" title="切换至es用户"></a>切换至es用户</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su es</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="启动Elasticsearch集群"><a href="#启动Elasticsearch集群" class="headerlink" title="启动Elasticsearch集群"></a>启动Elasticsearch集群</h3><h4 id="切换至es用户"><a href="#切换至es用户" class="headerlink" title="切换至es用户"></a>切换至es用户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su es</span><br></pre></td></tr></table></figure>
 
-<h4 id="在两个节点上分别启动es服务"><a href="#在两个节点上分别启动es服务" class="headerlink" title="在两个节点上分别启动es服务"></a>在两个节点上分别启动es服务</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd bin</span><br><span class="line">./elasticsearch -d # 设置后台启动</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="在两个节点上分别启动es服务"><a href="#在两个节点上分别启动es服务" class="headerlink" title="在两个节点上分别启动es服务"></a>在两个节点上分别启动es服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd bin</span><br><span class="line">.&#x2F;elasticsearch -d # 设置后台启动</span><br></pre></td></tr></table></figure>
 
-<h4 id="访问浏览且查看启动效果："><a href="#访问浏览且查看启动效果：" class="headerlink" title="访问浏览且查看启动效果："></a>访问浏览且查看启动效果：</h4><p>节点1启动效果如下图所示：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e5.JPG" alt=""></p>
-<p>节点2启动效果如下图所示：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e6.JPG" alt=""></p>
-<h4 id="命令行查看集群信息："><a href="#命令行查看集群信息：" class="headerlink" title="命令行查看集群信息："></a>命令行查看集群信息：</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1:9200/_cat/allocation?v</span><br></pre></td></tr></tbody></table></figure>
-<p>结果如下：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e7.JPG" alt=""></p>
-<h4 id="postman上插入数据"><a href="#postman上插入数据" class="headerlink" title="postman上插入数据"></a>postman上插入数据</h4><p><img src="https://xggholmesleon.github.io/article/19f2dc0e8.JPG" alt=""></p>
-<p>curl查看数据入库结果如下图所示：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e9.JPG" alt=""></p>
-<h4 id="Other"><a href="#Other" class="headerlink" title="Other:"></a>Other:</h4><p>查看集群信息目录命令：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e10.JPG" alt=""></p>
+<h4 id="访问浏览且查看启动效果："><a href="#访问浏览且查看启动效果：" class="headerlink" title="访问浏览且查看启动效果："></a>访问浏览且查看启动效果：</h4><p>节点1启动效果如下图所示：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e5.JPG" alt></p>
+<p>节点2启动效果如下图所示：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e6.JPG" alt></p>
+<h4 id="命令行查看集群信息："><a href="#命令行查看集群信息：" class="headerlink" title="命令行查看集群信息："></a>命令行查看集群信息：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:&#x2F;&#x2F;127.0.0.1:9200&#x2F;_cat&#x2F;allocation?v</span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e7.JPG" alt></p>
+<h4 id="postman上插入数据"><a href="#postman上插入数据" class="headerlink" title="postman上插入数据"></a>postman上插入数据</h4><p><img src="https://xggholmesleon.github.io/article/19f2dc0e8.JPG" alt></p>
+<p>curl查看数据入库结果如下图所示：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e9.JPG" alt></p>
+<h4 id="Other"><a href="#Other" class="headerlink" title="Other:"></a>Other:</h4><p>查看集群信息目录命令：<br><img src="https://xggholmesleon.github.io/article/19f2dc0e10.JPG" alt></p>
 <h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><p>1.<a href="https://blog.csdn.net/genghaihua/article/details/81479619" target="_blank" rel="noopener">https://blog.csdn.net/genghaihua/article/details/81479619</a></p>
-</body></html>
+
       
       
       
