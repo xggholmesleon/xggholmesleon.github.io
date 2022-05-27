@@ -14,13 +14,13 @@
 <meta property="og:url" content="https://xggholmesleon.github.io/article/b6c3476c">
 <meta property="og:site_name" content="博客記錄之家">
 <meta property="og:description" content="环境准备本文实验准备搭建双节点Elastisearch集群，准备两台Linux CentOS 6.5(Final) 64bit虚机节点1: 192.168.3.187节点2: 192.168.3.179(克隆机)">
-<meta property="og:image" content="https://xggholmesleon.github.io/article/b6c3476c1.JPG">
+<meta property="og:image" content="https://xggholmesleon.github.io/article/b6c3476c/1.JPG">
 <meta property="article:published_time" content="2020-07-03T10:33:10.000Z">
-<meta property="article:modified_time" content="2021-03-30T03:12:29.631Z">
+<meta property="article:modified_time" content="2022-05-27T08:11:00.303Z">
 <meta property="article:author" content="Holmes">
 <meta property="article:tag" content="es">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xggholmesleon.github.io/article/b6c3476c1.JPG">
+<meta name="twitter:image" content="https://xggholmesleon.github.io/article/b6c3476c/1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="博客記錄之家" type="application/atom+xml">
   
@@ -172,7 +172,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-双节点ES集群部署-一" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ES-01" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -269,7 +269,8 @@
 <p>检验是否安装成功：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
 
-<p>我这里成功安装结果如下：<br><img src="https://xggholmesleon.github.io/article/b6c3476c1.JPG" alt></p>
+<p>我这里成功安装结果如下：</p>
+<img src="/article/b6c3476c/1.JPG" class>
 <h3 id="节点配置"><a href="#节点配置" class="headerlink" title="节点配置"></a>节点配置</h3><h4 id="编辑安装目录下-config-elasticsearch-yml文件"><a href="#编辑安装目录下-config-elasticsearch-yml文件" class="headerlink" title="编辑安装目录下/config/elasticsearch.yml文件"></a>编辑安装目录下/config/elasticsearch.yml文件</h4><p>节点192.168.3.187配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: holmes         # 集群名称，两个节点需一致</span><br><span class="line">node.name: holmes-1          # 节点名称，两个节点需分别起名</span><br><span class="line">network.host: 192.168.3.187  # 绑定的地址</span><br><span class="line">network.bing_host: 0.0.0.0   # 设置本机可访问</span><br><span class="line">discovery.zen.ping.unicast.hosts: [&quot;192.168.3.187&quot;,&quot;192.168.3.179&quot;] # hosts列表</span><br></pre></td></tr></table></figure>
 
@@ -615,11 +616,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">es</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">es</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

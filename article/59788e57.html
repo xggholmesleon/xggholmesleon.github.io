@@ -14,16 +14,16 @@
 <meta property="og:url" content="https://xggholmesleon.github.io/article/59788e57">
 <meta property="og:site_name" content="博客記錄之家">
 <meta property="og:description" content="Q1:4000端口被占用解决办法：_config.yml内加上如下代码更改hexo-server运行时的端口号：">
-<meta property="og:image" content="https://xggholmesleon.github.io/article/59788e572.JPG">
-<meta property="og:image" content="https://xggholmesleon.github.io/article/59788e573.JPG">
-<meta property="og:image" content="https://xggholmesleon.github.io/article/59788e574.JPG">
+<meta property="og:image" content="https://xggholmesleon.github.io/article/59788e57/1.JPG">
+<meta property="og:image" content="https://xggholmesleon.github.io/article/59788e57/2.JPG">
+<meta property="og:image" content="https://xggholmesleon.github.io/article/59788e57/3.JPG">
 <meta property="og:image" content="https://xggholmesleon.github.io/article/59788e57hexo.png">
 <meta property="article:published_time" content="2020-06-21T09:50:45.000Z">
-<meta property="article:modified_time" content="2022-05-26T13:34:22.662Z">
+<meta property="article:modified_time" content="2022-05-27T08:10:13.439Z">
 <meta property="article:author" content="Holmes">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xggholmesleon.github.io/article/59788e572.JPG">
+<meta name="twitter:image" content="https://xggholmesleon.github.io/article/59788e57/1.JPG">
   
     <link rel="alternative" href="/atom.xml" title="博客記錄之家" type="application/atom+xml">
   
@@ -175,7 +175,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo趟坑" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-hexo-issue" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">693字</span>
+      <span class="post-count">801字</span>
      </span>
     </span>
 
@@ -227,7 +227,7 @@
      <span class="post-meta-item-icon">
       <i class="fa fa-hourglass-half"></i>
       <span class="post-meta-item-text">  阅读时长: </span>
-      <span class="post-count">2分</span>
+      <span class="post-count">3分</span>
      </span>
     </span>
 </div>
@@ -273,8 +273,10 @@
 <p>其中官方配置说明：<br>hexo2.x.x 有冒号后换行的空格缩进，而hexo3.x.x 没有缩进要求</p>
 <p>若依旧出现错误，两种办法都试下即可</p>
 <h3 id="Q4-主题详细配置－头像不显示"><a href="#Q4-主题详细配置－头像不显示" class="headerlink" title="Q4: 主题详细配置－头像不显示"></a>Q4: 主题详细配置－头像不显示</h3><p>解决办法：主题配置文件中配置如下</p>
-<p><img src="https://xggholmesleon.github.io/article/59788e572.JPG" alt></p>
-<p><img src="https://xggholmesleon.github.io/article/59788e573.JPG" alt></p>
+<img src="/article/59788e57/1.JPG" class>
+
+<img src="/article/59788e57/2.JPG" class>
+
 <p>如图，此处我的图片存放路径为themes/yilia/source/img/xxx.jpg<br>同理，网页导航栏logo设置也需要到对应路径下</p>
 <h3 id="Q5-部署到远端的网页图片不能显示，本地也不能显示"><a href="#Q5-部署到远端的网页图片不能显示，本地也不能显示" class="headerlink" title="Q5:部署到远端的网页图片不能显示，本地也不能显示"></a>Q5:部署到远端的网页图片不能显示，本地也不能显示</h3><p>解决办法：<br>1．修改主目录下的_config.yml参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
@@ -284,17 +286,20 @@
 
 <p>3.安装完上述插件后，当我们创建新文章时 hexo n “xxx” ，就自动在 xxx.md 文件的同目录下创建一个同名的文件夹，我们需要将文章使用的图片放在该文件夹中</p>
 <p>我的目录结构如下：</p>
-<p><img src="https://xggholmesleon.github.io/article/59788e574.JPG" alt></p>
+<img src="/article/59788e57/3.JPG" class>
+
 <p>４．最后，图片引用的方法<br>1)直接使用代码 <code>![](hexo.png)</code>（虽然没有写文件夹的名字，但是可以的），hexo.png 是我们存在 new article 文件夹内的图片。这时你会发现markdown预览中无法显示这张图片，但是当你将博客上传到网站时，网站上是可以正常显示的;</p>
 <p>2)使用代码 <code>![](new article/hexo.png)</code>不仅可以本地预览，上传到网站也可以正常显示;</p>
 <p>3)本地无法预览也是件很不舒服的事情，其实我们还可以另外创建一个文件夹 pictures ，里面专门存放所有文章的图片，代码 <img src="https://xggholmesleon.github.io/article/59788e57hexo.png" alt> 不仅可以本地预览，上传到网站也可以正常显示。</p>
 <p>注意： 不管采取哪种办法，都要创建一个和md文件同名的文件夹，里面放上需要的图片。<br>如果 2和3 中代码无法实现网站上的正常显示，那就使用 1 中的代码。<br>因为 2和3 中代码我无法保证每个人都成功。</p>
 <p>本文使用的方法是第一种</p>
+<p>2022.5.27更新记载，图片远程加载出现问题，参考5网址链接解决问题</p>
+<p>分析：Hexo 3以上版本图片相对路径插入格式使用传统md语法，容易出现多层嵌套和图片资源根目录定义错误导致路径解析有误从而远程与本地出现无法加载图片对问题，使用js语法引用图片相对路径，使用格式稳定些 </p>
 <h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><p>1.<a href="https://www.it1352.com/710717.html" target="_blank" rel="noopener">https://www.it1352.com/710717.html</a></p>
 <p>2.<a href="https://www.cnblogs.com/Sroot/p/6305938.html" target="_blank" rel="noopener">https://www.cnblogs.com/Sroot/p/6305938.html</a></p>
 <p>3.<a href="https://www.nickyam.com/tech/hexo-generate-sitemap.html" target="_blank" rel="noopener">https://www.nickyam.com/tech/hexo-generate-sitemap.html</a></p>
-<p>4.<a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">https://www.jianshu.com/p/3a05351a37dc</a><br>                                                                                                                                                                                                    5.<a href="https://blog.csdn.net/qq_36408085/article/details/104117319" target="_blank" rel="noopener">https://blog.csdn.net/qq_36408085/article/details/104117319</a></p>
-<p>6.<a href="https://blog.csdn.net/z952957407/article/details/11642548" target="_blank" rel="noopener">https://blog.csdn.net/z952957407/article/details/11642548</a></p>
+<p>4.<a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">https://www.jianshu.com/p/3a05351a37dc</a>                                                </p>
+<p>5.t.zoukankan.com/jesee-p-11234387.html</p>
 
       
       
@@ -638,11 +643,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">es</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">es</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
